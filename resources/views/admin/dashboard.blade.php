@@ -7,5 +7,6 @@
     <link rel="stylesheet" href={{asset(style.css)}}>
 </head>
 <body>
+    <h1>Admin</h1>
 </body>
 </html>

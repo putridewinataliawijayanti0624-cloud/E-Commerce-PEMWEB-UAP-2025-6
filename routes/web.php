@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -55,5 +59,26 @@ Route::prefix('member')->middleware(['auth','role:member'])->group(function () {
     Route::get('profile', [MemberController::class, 'edit'])->name('member.profile.edit');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/store', [StoreController::class, 'index'])->name('store.index');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+});
+
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Store
+Route::get('/store', [StoreController::class, 'index'])->name('store.index');
+Route::get('/store/{id}', [StoreController::class, 'show'])->name('store.show');
+
+// Category
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
+
+// Orders
+Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
+Route::get('/orders/{id}', [OrdersController::class, 'show'])->name('orders.show');
 
 require __DIR__.'/auth.php';
