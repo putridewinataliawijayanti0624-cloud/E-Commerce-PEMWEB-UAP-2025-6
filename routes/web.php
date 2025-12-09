@@ -35,4 +35,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::delete('profile', [AdminController::class, 'destroy'])->name('destroy');
 });
 
+// ================= MEMBER CONTROLLER =================
+Route::prefix('member')->name('member.')->middleware(['auth', 'role:member'])->group(function () {
+    Route::get('profile', [MemberController::class, 'edit'])->name('edit');
+    Route::put('profile', [MemberController::class, 'update'])->name('update');
+    Route::delete('profile', [MemberController::class, 'destroy'])->name('destroy');
+});
+
 require __DIR__.'/auth.php';

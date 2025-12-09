@@ -20,7 +20,7 @@ class StoreSeeder extends Seeder
             Store::create([
                 'user_id' => $user->id,
                 'name' => 'UrbanShoes',
-                'logo' => 'urban-shoes-logo.png', // pastikan file logo ada di public/images atau storage
+                'logo' => 'urban-shoes-logo.png', 
                 'about' => 'UrbanShoes adalah toko sepatu modern yang menyediakan berbagai jenis sepatu untuk semua kalangan.',
                 'phone' => '081234567890',
                 'address_id' => 'ID-STORE-001',
