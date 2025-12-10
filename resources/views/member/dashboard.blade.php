@@ -6,7 +6,7 @@
 
     <ul>
         <li><a href="/history">Riwayat Belanja</a></li>
-        <li><a href="/wallet/topup">Topup Saldo</a></li>
+        <li><a href="/wallet/topup">Top-Up Saldo</a></li>
     </ul>
 </div>
 @endsection
