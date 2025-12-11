@@ -52,7 +52,7 @@ class ProductCategorySeeder extends Seeder
 
         foreach ($categories as $category) {
             ProductCategory::firstOrCreate(
-                ['slug' => $category['slug']], // cek berdasarkan slug
+                ['slug' => $category['slug']],
                 $category
             );
         }

@@ -23,6 +23,13 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Second Seller',
+            'email' => 'seller2@example.com',
+            'password' => Hash::make('seller123'),
+            'role'=> 'seller'
+        ]);
+
+        User::create([
             'name' => 'Member User',
             'email' => 'member@example.com',
             'password' => Hash::make('member123'),

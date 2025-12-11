@@ -8,29 +8,42 @@ use App\Models\User;
 
 class StoreSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Ambil user pertama dengan role 'member' sebagai owner store
-        $user = User::where('role', 'member')->first();
+        $sellers = User::where('role', 'seller')->get();
 
-        if ($user) {
+        if ($sellers->count() < 2) {
+            $this->command->info('Minimal harus punya 2 user seller');
+            return;
+        }
+
+        // Seller 1
+        Store::create([
+            'user_id' => $sellers[0]->id,
+            'name' => 'UrbanShoes',
+            'logo' => 'store1.png',
+            'about' => 'UrbanShoes menjual sepatu modern dan stylish',
+            'phone' => '081234567890',
+            'city' => 'Malang',
+            'address' => 'Jl. Sumbersari No.12',
+            'address_id' => null,
+            'postal_code' => '65145',
+            'is_verified' => true,
+        ]);
+
+            // Seller 2
             Store::create([
-                'user_id' => $user->id,
-                'name' => 'UrbanShoes',
-                'logo' => 'urban-shoes-logo.png', 
-                'about' => 'UrbanShoes adalah toko sepatu modern yang menyediakan berbagai jenis sepatu untuk semua kalangan.',
-                'phone' => '081234567890',
-                'address_id' => 'ID-STORE-001',
-                'city' => 'Malang',
-                'address' => 'Jl. Soekarno-Hatta No. 123, Malang',
-                'postal_code' => '65145',
+                'user_id' => $sellers[1]->id,
+                'name' => 'SneakerSpace',
+                'logo' => 'store2.png',
+                'about' => 'SneakerSpace menjual sepatu casual dan sporty',
+                'phone' => '089876543210',
+                'city' => 'Surabaya',
+                'address' => 'Jl. Diponegoro No.22',
+                'address_id' => null,
+                'postal_code' => '60252',
                 'is_verified' => true,
             ]);
-        } else {
-            $this->command->info('Tidak ada user dengan role member. Tambahkan user terlebih dahulu!');
+
         }
     }
-}

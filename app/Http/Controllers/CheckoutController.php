@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;              
+use Illuminate\Support\Facades\Auth; 
 
 class CheckoutController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        return view('checkout.index', compact('id'));
+        // Ambil semua pesanan user yang sedang login
+        $orders = Order::where('user_id', Auth::id())->get();
+
+        return view('checkout.index', compact('orders'));
     }
 }
+
