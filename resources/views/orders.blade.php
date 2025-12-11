@@ -5,7 +5,7 @@
     <h1 class="text-3xl font-bold mb-6 text-orange-600">Pesanan Saya</h1>
     
     @if($orders->isEmpty())
-        <p class="text-gray-700">Belum ada pesanan sama sekali .</p>
+        <p class="text-gray-700">Belum ada pesanan sama sekali!!!1 .</p>
     @else
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border rounded-lg shadow">
